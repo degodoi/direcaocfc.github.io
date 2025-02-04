@@ -98,7 +98,9 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      margin-top: 10px;
+      width: 100%; /* Ocupa toda a largura do container */
+      justify-content: center; /* Centraliza o conteúdo */
+      margin-top: 24px; /* Ajuste para alinhar verticalmente */
     }
     .clear-btn:hover {
       background-color: #990000;
@@ -180,10 +182,13 @@
           <input type="number" id="extras-moto" placeholder="0" min="0" oninput="atualizarValores()">
           <span class="valor-parcial" id="valor-extras-moto">R$ 0.00</span>
         </div>
+        <!-- Botão de Limpar -->
+        <div class="input-group">
+          <button type="button" class="clear-btn" onclick="limparCampos()">
+            <i class="fas fa-eraser"></i> Limpar
+          </button>
+        </div>
       </div>
-      <button type="button" class="clear-btn" onclick="limparCampos()">
-        <i class="fas fa-eraser"></i> Limpar
-      </button>
     </form>
     <div id="resultado-ganhos">
       <p>Moto: <strong><span id="resumo-moto">0</span></strong> (R$ <span id="resumo-valor-moto">0.00</span>)</p>
