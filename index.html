@@ -400,13 +400,60 @@ Venha fazer parte da nossa equipe de motoristas preparados. Sua CNH começa aqui
   </section>
 
   <!-- Seção Preços -->
-  <section id="precos">
-    <h2>Seu Investimento</h2>
-    <p>Os valores variam conforme o tipo de curso ou serviço. Entre em contato para saber mais detalhes e agendar sua aula!</p>
-    <a href="https://wa.me/5599981041222?text=Olá,%20CFC%20Direção!%20Gostaria%20de%20saber%20mais%20sobre%20os%20preços.%20Pode%20me%20ajudar?" class="whatsapp-button" target="_blank">
-      <i class="fab fa-whatsapp"></i> Solicitar Orçamento
-    </a>
-  </section>
+<section id="precos">
+  <h2>Informações de Valores</h2>
+  <p>Clique no serviço desejado para saber mais sobre os valores:</p>
+  <div class="destaques">
+    <!-- CNH Categoria A Moto -->
+    <div class="destaque-item" onclick="abrirWhatsApp('CNH Categoria A Moto')">
+      <i class="fas fa-motorcycle icon"></i>
+      <h3>CNH Categoria A Moto</h3>
+      <p>Habilitação para motocicletas.</p>
+    </div>
+
+    <!-- CNH Categoria B Carro -->
+    <div class="destaque-item" onclick="abrirWhatsApp('CNH Categoria B Carro')">
+      <i class="fas fa-car icon"></i>
+      <h3>CNH Categoria B Carro</h3>
+      <p>Habilitação para carros.</p>
+    </div>
+
+    <!-- CNH A/B Moto e Carro -->
+    <div class="destaque-item" onclick="abrirWhatsApp('CNH A/B Moto e Carro')">
+      <i class="fas fa-biking icon"></i>
+      <h3>CNH A/B Moto e Carro</h3>
+      <p>Habilitação para motos e carros.</p>
+    </div>
+
+    <!-- Adição de Categoria -->
+    <div class="destaque-item" onclick="abrirWhatsApp('Adição de Categoria')">
+      <i class="fas fa-plus-circle icon"></i>
+      <h3>Adição de Categoria</h3>
+      <p>Amplie suas possibilidades na direção.</p>
+    </div>
+
+    <!-- Mudança de Categoria -->
+    <div class="destaque-item" onclick="abrirWhatsApp('Mudança de Categoria')">
+      <i class="fas fa-exchange-alt icon"></i>
+      <h3>Mudança de Categoria</h3>
+      <p>Altere sua categoria de habilitação.</p>
+    </div>
+
+    <!-- Reciclagem -->
+    <div class="destaque-item" onclick="abrirWhatsApp('Reciclagem')">
+      <i class="fas fa-sync-alt icon"></i>
+      <h3>Reciclagem</h3>
+      <p>Atualize seus conhecimentos e habilidades.</p>
+    </div>
+
+    <!-- Outros Serviços -->
+    <div class="destaque-item" onclick="abrirWhatsApp('Outros Serviços')">
+      <i class="fas fa-question-circle icon"></i>
+      <h3>Outros Serviços</h3>
+      <p>Entre em contato para mais informações.</p>
+    </div>
+  </div>
+</section>
 
   <!-- Seção Galeria -->
   <section id="galeria">
@@ -518,6 +565,19 @@ Venha fazer parte da nossa equipe de motoristas preparados. Sua CNH começa aqui
 
     // Passa automaticamente a cada 4.5 segundos
     setInterval(() => moverCarrossel(1), 4500);
+  </script>
+  <script>
+    function abrirWhatsApp(servico) {
+      // Número de telefone e mensagem pré-definida
+      const numero = "5599981041222"; // Substitua pelo seu número do WhatsApp
+      const mensagem = `Olá, vim pelo site e gostaria de saber o valor do serviço: ${servico}.`;
+  
+      // Codifica a mensagem para uso em URL
+      const mensagemCodificada = encodeURIComponent(mensagem);
+  
+      // Abre o WhatsApp com a mensagem
+      window.open(`https://wa.me/${numero}?text=${mensagemCodificada}`, "_blank");
+    }
   </script>
 </body>
 </html>
