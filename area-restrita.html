@@ -38,6 +38,7 @@
       font-size: 1.2rem;
       font-weight: 300;
     }
+
     /* Container da Calculadora */
     #calculadora-ganhos {
       max-width: 400px;
@@ -53,10 +54,7 @@
       color: #cc0000;
       text-align: center;
     }
-    /* Remove margem padrão do form */
-    form#form-ganhos {
-      margin: 0;
-    }
+
     /* Layout em grade para os campos */
     .form-grid {
       display: grid;
@@ -72,14 +70,12 @@
       margin-bottom: 3px;
       font-weight: 600;
     }
-    /* Reduzindo o tamanho dos inputs */
     .input-group input {
       padding: 4px 6px;
       font-size: 0.85rem;
       border: 1px solid #ccc;
       border-radius: 4px;
       text-align: right;
-      /* Definindo uma altura fixa para os inputs */
       height: 28px;
     }
     .valor-parcial {
@@ -88,7 +84,31 @@
       margin-top: 3px;
       text-align: right;
     }
-    /* Resultado do Cálculo (quadro branco) */
+
+    /* Botão de Limpar */
+    .clear-btn {
+      background-color: #cc0000;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .clear-btn:hover {
+      background-color: #990000;
+      transform: scale(1.05);
+    }
+    .clear-btn i {
+      font-size: 0.9rem;
+    }
+
+    /* Resultado do Cálculo */
     #resultado-ganhos {
       margin: 15px 0 0 0;
       padding: 10px;
@@ -104,6 +124,7 @@
     #resultado-ganhos strong {
       color: #cc0000;
     }
+
     /* Responsividade para telas pequenas */
     @media (max-width: 480px) {
       .form-grid {
@@ -113,7 +134,6 @@
   </style>
   <!-- Script para solicitação de senha -->
   <script>
-    // Defina a senha desejada (ATENÇÃO: este método é apenas para demonstração)
     const senhaCorreta = "minhasenha123";
     let senhaDigitada = prompt("Digite a senha para acessar a Área Restrita:");
     if (senhaDigitada !== senhaCorreta) {
@@ -157,17 +177,13 @@
         </div>
         <div class="input-group">
           <label for="extras-moto"><i class="fas fa-motorcycle"></i> Extras Moto</label>
-          <div class="input-row">
-            <input type="number" id="extras-moto" placeholder="0" min="0" oninput="atualizarValores()">
-            <span class="valor-parcial" id="valor-extras-moto">R$ 0.00</span>
-          </div>
-		</div>
-		<div class="input-group">
-          <button type="button" class="clear-btn" onclick="limparCampos()" title="Limpar Campos">
-              <i class="fas fa-eraser"></i>
-            </button>
-          </div>
+          <input type="number" id="extras-moto" placeholder="0" min="0" oninput="atualizarValores()">
+          <span class="valor-parcial" id="valor-extras-moto">R$ 0.00</span>
+        </div>
       </div>
+      <button type="button" class="clear-btn" onclick="limparCampos()">
+        <i class="fas fa-eraser"></i> Limpar
+      </button>
     </form>
     <div id="resultado-ganhos">
       <p>Moto: <strong><span id="resumo-moto">0</span></strong> (R$ <span id="resumo-valor-moto">0.00</span>)</p>
@@ -227,7 +243,7 @@
       document.getElementById('valor-total').textContent = valorTotal.toFixed(2);
     }
 
-    // Função para limpar os campos e reiniciar os valores
+    // Função para limpar os campos
     function limparCampos() {
       document.getElementById('aulas-moto').value = "";
       document.getElementById('aulas-carro').value = "";
