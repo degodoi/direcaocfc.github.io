@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CFC Direção Imperatriz MA - Conquiste sua CNH com a melhor autoescola de Imperatriz! Oferecemos cursos para primeira habilitação, reciclagem e adição de categoria.">
+  <meta name="keywords" content="CFC, autoescola, Imperatriz, CNH, habilitação, direção, cursos, reciclagem">
+  <meta name="author" content="CFC Direção Imperatriz MA">
+  <title>CFC Direção Imperatriz MA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e Estilos Globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    header p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    /* Menu de Navegação */
+    nav {
+      background-color: #cc0000;
+      padding: 15px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Seções */
+    section {
+      padding: 80px 20px;
+      margin: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #cc0000;
+    }
+
+    /* Seção Sobre Nós */
+    #sobre p {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* Botões */
+    .whatsapp-button {
+      display: inline-block;
+      background-color: #25d366;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .whatsapp-button:hover {
+      background-color: #128c7e;
+      transform: scale(1.05);
+    }
+
+    /* Ícones */
+    .icon {
+      font-size: 2.5rem;
+      color: #cc0000;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+    .icon:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Destaques */
+    .destaques {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .destaque-item {
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .destaque-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Galeria */
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .galeria img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Carrossel de Depoimentos */
+    .carrossel {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .carrossel-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .depoimento-item {
+      flex: 0 0 100%;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .depoimento-item p {
+      font-style: italic;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .depoimento-item footer {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #cc0000;
+      margin-top: 10px;
+      background-color: transparent;
+    }
+    .carrossel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+    }
+    .carrossel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .carrossel-btn.prev {
+      left: 10px;
+    }
+    .carrossel-btn.next {
+      right: 10px;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #cc0000;
+      font-weight: 600;
+    }
+    footer a:hover {
+      color: #ffcc00;
+    }
+
+    /* Redes Sociais */
+    .redes-sociais {
+      margin-top: 20px;
+    }
+    .redes-sociais a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #cc0000;
+      transition: color 0.3s ease;
+    }
+    .redes-sociais a:hover {
+      color: #ffcc00;
+    }
+
+    /* Mapa */
+    .mapa {
+      margin-top: 20px;
+    }
+    .mapa iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+      }
+      section {
+        padding: 40px 15px;
+        margin: 10px;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+      .whatsapp-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+      .destaque-item, .depoimento-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <!-- Novo vídeo de fundo -->
+	<video autoplay muted loop poster="fallback-image.jpg">
+  <source src="novo_video.mp4" type="video/mp4">
+  Seu navegador não suporta vídeos.
+	</video>
+    <h1>CFC Direção Imperatriz MA</h1>
+    <p>Habilitar é nossa meta! Somos especialistas em CNH, preparando você para o trânsito com excelência.</p>
+  </header>
+
+  <!-- Menu de Navegação -->
+  <nav>
+    <a href="#home">Início</a>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#precos">Preços</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+    <a href="area-restrita.html" target="_blank">Área Restrita</a>
+  </nav>
+
+  <!-- Seção Home -->
+  <section id="home">
+    <h2>Bem-vindo ao CFC Direção Imperatriz MA</h2>
+    <p>Conquiste sua CNH com a melhor autoescola de Imperatriz!</p>
+    <a href="https://wa.me/5599981041222?text=Olá,%20CFC%20Direção!%20Gostaria%20de%20agendar%20uma%20aula.%20Pode%20me%20ajudar?" class="whatsapp-button" target="_blank">
+      <i class="fab fa-whatsapp"></i> Agende sua Aula!
+    </a>
+  </section>
+
+  <!-- Seção Sobre Nós -->
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>
+      No CFC Direção Imperatriz MA, trabalhamos com cursos para obtenção, reciclagem e adição de categoria na CNH. Nossa equipe de instrutores especializados garante uma formação completa e segura, preparando você para todos os desafios do trânsito.
+    </p>
+    <a href="#contato" class="whatsapp-button">Entre em Contato</a>
+  </section>
+
+  <!-- Seção Serviços -->
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="destaques">
+      <div class="destaque-item">
+        <div>
+          <i class="fas fa-car icon"></i>
+          <i class="fas fa-motorcycle icon"></i>
+        </div>
+        <h3>Primeira Habilitação</h3>
+        <p>Categorias A (moto) e B (carro).</p>
+      </div>
+      <div class="destaque-item">
+        <i class="fas fa-sync-alt icon"></i>
+        <h3>Reciclagem</h3>
+        <p>Atualize seus conhecimentos e habilidades.</p>
+      </div>
+      <div class="destaque-item">
+        <i class="fas fa-bus icon"></i>
+        <h3>Categoria D (Ônibus)</h3>
+        <p>Habilitação para veículos de transporte coletivo.</p>
+      </div>
+      <div class="destaque-item">
+        <i class="fas fa-plus-circle icon"></i>
+        <h3>Adição de Categoria</h3>
+        <p>Amplie suas possibilidades na direção.</p>
+      </div>
+      <div class="destaque-item">
+        <i class="fas fa-graduation-cap icon"></i>
+        <h3>Cursos Especiais</h3>
+        <p>Transporte Coletivo, Escolar, MOPP, Cargas Indivisíveis e Veículos de Emergência.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/5599981041222?text=Olá,%20CFC%20Direção!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços.%20Pode%20me%20ajudar?" class="whatsapp-button" target="_blank">
+      <i class="fab fa-whatsapp"></i> Saiba Mais
+    </a>
+  </section>
+
+  <!-- Seção Preços -->
+  <section id="precos">
+    <h2>Nossos Preços</h2>
+    <p>Os valores variam conforme o tipo de curso ou serviço. Entre em contato para saber mais detalhes e agendar sua aula!</p>
+    <a href="https://wa.me/5599981041222?text=Olá,%20CFC%20Direção!%20Gostaria%20de%20saber%20mais%20sobre%20os%20preços.%20Pode%20me%20ajudar?" class="whatsapp-button" target="_blank">
+      <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+    </a>
+  </section>
+
+  <!-- Seção Galeria -->
+  <section id="galeria">
+    <h2>Nossa Galeria</h2>
+    <div class="galeria">
+      <img src="https://www.instagram.com/p/C9xi0AXO6ie/media" alt="Galeria 1">
+      <img src="https://www.instagram.com/p/C9mu3HjOuyu/media" alt="Galeria 2">
+      <img src="https://www.instagram.com/p/C9mtu8VOT6i/media" alt="Galeria 3">
+    </div>
+  </section>
+
+  <!-- Seção Depoimentos -->
+  <section id="depoimentos">
+    <h2>O que Nossos Alunos Dizem</h2>
+    <div class="carrossel">
+      <div class="carrossel-container">
+        <div class="depoimento-item">
+          <p>"Fiz minha primeira habilitação no CFC Direção e adorei a experiência!"</p>
+          <footer>— Marcos Felipe</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Renovei minha CNH aqui e foi tudo muito rápido e eficiente."</p>
+          <footer>— Camila Fernanda</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Adicionei a categoria A na minha CNH e fui muito bem atendida."</p>
+          <footer>— Raymara</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"A equipe é muito atenciosa e as aulas são excelentes!"</p>
+          <footer>— Eunice</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Recomendo a todos que querem tirar sua CNH com qualidade."</p>
+          <footer>— Josi Oliveira</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Fiz a categoria D aqui e foi uma experiência incrível!"</p>
+          <footer>— Anthony Jair</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Os instrutores são muito pacientes e competentes."</p>
+          <footer>— Alexon</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Consegui minha CNH graças ao CFC Direção!"</p>
+          <footer>— Samuel</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Aulas práticas muito bem organizadas e instrutores qualificados."</p>
+          <footer>— Vitória</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Fiz a reciclagem aqui e aprendi muito sobre as novas leis de trânsito."</p>
+          <footer>— Shayane</footer>
+        </div>
+        <div class="depoimento-item">
+          <p>"Adicionei a categoria A e foi tudo muito fácil e rápido."</p>
+          <footer>— Thaina Costa</footer>
+        </div>
+      </div>
+      <button class="carrossel-btn prev" onclick="moverCarrossel(-1)">&#10094;</button>
+      <button class="carrossel-btn next" onclick="moverCarrossel(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Seção Contato -->
+  <section id="contato">
+    <h2>Entre em Contato</h2>
+    <p>Endereço: Rua Godofredo Viana, 771, Imperatriz-MA, 65900-100</p>
+    <p>Telefone: (99) 98104-1222</p>
+    <div class="redes-sociais">
+      <a href="https://www.instagram.com/direcaocfc" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://threads.net/@direcaocfc" target="_blank">
+        <i class="fas fa-comments"></i>
+      </a>
+      <a href="https://wa.me/5599981041222" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="mailto:direcaocfcitz@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.317060154684!2d-47.47785168524095!3d-5.520096355992619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92cf58c6f6e8c7b5%3A0x4f2f8b0f0f0f0f0f!2sRua%20Godofredo%20Viana%2C%20771%2C%20Imperatriz%20-%20MA%2C%2065900-100!5e0!3m2!1spt-BR!2sbr!4v1633020000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>CFC Direção Imperatriz MA - Habilitar é nossa meta! © 2025. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script do Carrossel -->
+  <script>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.depoimento-item');
+    const totalItems = items.length;
+
+    function moverCarrossel(direction) {
+      currentIndex = (currentIndex + direction + totalItems) % totalItems;
+      const offset = -currentIndex * 100;
+      document.querySelector('.carrossel-container').style.transform = `translateX(${offset}%)`;
+    }
+
+    // Passa automaticamente a cada 4.5 segundos
+    setInterval(() => moverCarrossel(1), 4500);
+  </script>
+</body>
+</html>

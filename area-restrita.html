@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Restrita - CFC Direção Imperatriz MA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset e Estilos Globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.4;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    /* Container da Calculadora */
+    #calculadora-ganhos {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #calculadora-ganhos h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #cc0000;
+      text-align: center;
+    }
+    /* Remove margem padrão do form */
+    form#form-ganhos {
+      margin: 0;
+    }
+    /* Layout em grade para os campos */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .form-grid .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .input-group label {
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+    /* Reduzindo o tamanho dos inputs */
+    .input-group input {
+      padding: 4px 6px;
+      font-size: 0.85rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: right;
+      /* Definindo uma altura fixa para os inputs */
+      height: 28px;
+    }
+    .valor-parcial {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 3px;
+      text-align: right;
+    }
+    /* Resultado do Cálculo (quadro branco) */
+    #resultado-ganhos {
+      margin: 15px 0 0 0;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+    #resultado-ganhos p {
+      margin: 5px 0;
+    }
+    #resultado-ganhos strong {
+      color: #cc0000;
+    }
+    /* Responsividade para telas pequenas */
+    @media (max-width: 480px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <!-- Script para solicitação de senha -->
+  <script>
+    // Defina a senha desejada (ATENÇÃO: este método é apenas para demonstração)
+    const senhaCorreta = "minhasenha123";
+    let senhaDigitada = prompt("Digite a senha para acessar a Área Restrita:");
+    if (senhaDigitada !== senhaCorreta) {
+      alert("Senha incorreta. Você não tem permissão para acessar essa área.");
+      window.location.href = "index.html";
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Área Restrita</h1>
+    <p>CFC Direção Imperatriz MA</p>
+  </header>
+
+  <!-- Calculadora de Ganhos -->
+  <div id="calculadora-ganhos">
+    <h2>Calculadora de Ganhos</h2>
+    <form id="form-ganhos">
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="aulas-moto"><i class="fas fa-motorcycle"></i> Moto</label>
+          <input type="number" id="aulas-moto" placeholder="0" min="0" oninput="atualizarValores()">
+          <span class="valor-parcial" id="valor-moto">R$ 0.00</span>
+        </div>
+        <div class="input-group">
+          <label for="aulas-carro"><i class="fas fa-car"></i> Carro</label>
+          <input type="number" id="aulas-carro" placeholder="0" min="0" oninput="atualizarValores()">
+          <span class="valor-parcial" id="valor-carro">R$ 0.00</span>
+        </div>
+        <div class="input-group">
+          <label for="provas"><i class="fas fa-file-alt"></i> Provas</label>
+          <input type="number" id="provas" placeholder="0" min="0" oninput="atualizarValores()">
+          <span class="valor-parcial" id="valor-provas">R$ 0.00</span>
+        </div>
+        <div class="input-group">
+          <label for="extras-carro"><i class="fas fa-car-side"></i> Extras Carro</label>
+          <input type="number" id="extras-carro" placeholder="0" min="0" oninput="atualizarValores()">
+          <span class="valor-parcial" id="valor-extras-carro">R$ 0.00</span>
+        </div>
+        <div class="input-group">
+          <label for="extras-moto"><i class="fas fa-motorcycle"></i> Extras Moto</label>
+          <div class="input-row">
+            <input type="number" id="extras-moto" placeholder="0" min="0" oninput="atualizarValores()">
+            <span class="valor-parcial" id="valor-extras-moto">R$ 0.00</span>
+          </div>
+		</div>
+		<div class="input-group">
+          <button type="button" class="clear-btn" onclick="limparCampos()" title="Limpar Campos">
+              <i class="fas fa-eraser"></i>
+            </button>
+          </div>
+      </div>
+    </form>
+    <div id="resultado-ganhos">
+      <p>Moto: <strong><span id="resumo-moto">0</span></strong> (R$ <span id="resumo-valor-moto">0.00</span>)</p>
+      <p>Carro: <strong><span id="resumo-carro">0</span></strong> (R$ <span id="resumo-valor-carro">0.00</span>)</p>
+      <p>Provas: <strong><span id="resumo-provas">0</span></strong> (R$ <span id="resumo-valor-provas">0.00</span>)</p>
+      <p>Extras Carro: <strong><span id="resumo-extras-carro">0</span></strong> (R$ <span id="resumo-valor-extras-carro">0.00</span>)</p>
+      <p>Extras Moto: <strong><span id="resumo-extras-moto">0</span></strong> (R$ <span id="resumo-valor-extras-moto">0.00</span>)</p>
+      <p>Total Aulas: <strong><span id="total-aulas">0</span></strong></p>
+      <p>Total: <strong>R$ <span id="valor-total">0.00</span></strong></p>
+    </div>
+  </div>
+
+  <!-- Script da Calculadora de Ganhos -->
+  <script>
+    // Preços por item
+    const precoAulaMoto = 8;
+    const precoAulaCarro = 9;
+    const precoProva = 20;
+    const precoExtraCarro = 9;
+    const precoExtraMoto = 8;
+
+    // Atualiza os valores em tempo real
+    function atualizarValores() {
+      const aulasMoto = parseInt(document.getElementById('aulas-moto').value) || 0;
+      const aulasCarro = parseInt(document.getElementById('aulas-carro').value) || 0;
+      const provas = parseInt(document.getElementById('provas').value) || 0;
+      const extrasCarro = parseInt(document.getElementById('extras-carro').value) || 0;
+      const extrasMoto = parseInt(document.getElementById('extras-moto').value) || 0;
+
+      const valorMoto = aulasMoto * precoAulaMoto;
+      const valorCarro = aulasCarro * precoAulaCarro;
+      const valorProvas = provas * precoProva;
+      const valorExtrasCarro = extrasCarro * precoExtraCarro;
+      const valorExtrasMoto = extrasMoto * precoExtraMoto;
+
+      document.getElementById('valor-moto').textContent = `R$ ${valorMoto.toFixed(2)}`;
+      document.getElementById('valor-carro').textContent = `R$ ${valorCarro.toFixed(2)}`;
+      document.getElementById('valor-provas').textContent = `R$ ${valorProvas.toFixed(2)}`;
+      document.getElementById('valor-extras-carro').textContent = `R$ ${valorExtrasCarro.toFixed(2)}`;
+      document.getElementById('valor-extras-moto').textContent = `R$ ${valorExtrasMoto.toFixed(2)}`;
+
+      document.getElementById('resumo-moto').textContent = aulasMoto;
+      document.getElementById('resumo-valor-moto').textContent = valorMoto.toFixed(2);
+      document.getElementById('resumo-carro').textContent = aulasCarro;
+      document.getElementById('resumo-valor-carro').textContent = valorCarro.toFixed(2);
+      document.getElementById('resumo-provas').textContent = provas;
+      document.getElementById('resumo-valor-provas').textContent = valorProvas.toFixed(2);
+      document.getElementById('resumo-extras-carro').textContent = extrasCarro;
+      document.getElementById('resumo-valor-extras-carro').textContent = valorExtrasCarro.toFixed(2);
+      document.getElementById('resumo-extras-moto').textContent = extrasMoto;
+      document.getElementById('resumo-valor-extras-moto').textContent = valorExtrasMoto.toFixed(2);
+
+      const totalAulas = aulasMoto + aulasCarro + provas + extrasCarro + extrasMoto;
+      const valorTotal = valorMoto + valorCarro + valorProvas + valorExtrasCarro + valorExtrasMoto;
+
+      document.getElementById('total-aulas').textContent = totalAulas;
+      document.getElementById('valor-total').textContent = valorTotal.toFixed(2);
+    }
+
+    // Função para limpar os campos e reiniciar os valores
+    function limparCampos() {
+      document.getElementById('aulas-moto').value = "";
+      document.getElementById('aulas-carro').value = "";
+      document.getElementById('provas').value = "";
+      document.getElementById('extras-carro').value = "";
+      document.getElementById('extras-moto').value = "";
+      atualizarValores();
+    }
+  </script>
+</body>
+</html>
